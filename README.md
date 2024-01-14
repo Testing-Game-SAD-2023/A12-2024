@@ -1,9 +1,8 @@
 # Task 11 - Gruppo 41
 Componenti:
-- Luigi Cecere - M63/1413
-- Chiara Capocello - M63/1451
-- Giovanni Gentile - M63/1450
-- Michelangelo Formato - M63/1519
+- Francesco Pio Manna - M63001485
+- Davide Landolfi - M63001524
+- Claudio Pisa - M63001512
 
 # GUIDA ALL'INSTALLAZIONE
 
