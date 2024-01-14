@@ -299,6 +299,7 @@ public class MyController {
             result.put("win", userScore >= roboScore);
             result.put("robotScore", roboScore);
             result.put("score", userScore);
+            result.put("gameScore", gameScore);
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

@@ -459,7 +459,7 @@ public class TestCalcolatrice {
     var turno = 0; // numero di turni giocati fino ad ora
     var orderTurno = 0;
     var perc_robot = '0'; // percentuale di copertura del robot scelto
-
+    var gameScore = 0;
     const getCookie = (name) => {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
@@ -799,6 +799,7 @@ public class TestCalcolatrice {
                         risp = response;
 
                         perc_robot = response.robotScore.toString();
+                        gameScore = response.gameScore.toString();
 
                         consoleArea.setValue(response.outCompile);
                         highlightCodeCoverage($.parseXML(response.coverage));
@@ -806,7 +807,7 @@ public class TestCalcolatrice {
                         Il tuo punteggio: ${response.score.toString()}% LOC
                         Il punteggio del robot: ${response.robotScore.toString()}% LOC`);*/
 
-                        alert(response.win == true ? "Hai vinto!" : "Hai perso!");
+                        alert(response.win == true ? "Hai vinto! Punteggio: " + gameScore : "Hai perso!");
                         //localStorage.clear();
                         if (response.win == true) {
                             turno++;  // incremento il numero di turno giocati fino ad ora
