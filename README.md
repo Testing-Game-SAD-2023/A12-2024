@@ -1,4 +1,4 @@
-# Task 11 - Gruppo 41
+# Requisiti R1 ed R8 - Gruppo A12
 Componenti:
 - Francesco Pio Manna - M63001485
 - Davide Landolfi - M63001524
