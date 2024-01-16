@@ -1,26 +1,21 @@
-import org.junit.Before;
-import org.junit.After;
-import org.junit.BeforeClass;
-import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestCalcolatrice {
-    private static Calcolatrice cut;
-
-    @BeforeClass
-    public static void setup() {
-        cut = new Calcolatrice();
-    }
 
     @Test
     public void testDivide() {
-        int result = cut.divide(10, 2);
-        assertEquals(5, result);
-    }
+        Calcolatrice calcolatrice = new Calcolatrice();
 
-    @Test(expected = ArithmeticException.class)
-    public void testDivideByZero() {
-        cut.divide(10, 0);
+        // Test divisione normale
+        assertEquals(2, calcolatrice.divide(6, 3));
+
+        // Test divisione per zero
+        try {
+            calcolatrice.divide(10, 0);
+            fail("Expected ArithmeticException");
+        } catch (ArithmeticException e) {
+            assertEquals("Cannot divide by zero", e.getMessage());
+        }
     }
 }

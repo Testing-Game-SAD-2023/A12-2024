@@ -14,12 +14,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginTest {
+    private static final String DRIVER_PATH = "driver\\chromedriver-win64\\chromedriver.exe";
+
     private static ChromeDriver driver;
     private static int timeout = 10;
 
     @BeforeClass
     public static void setDriver() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\luix1\\Downloads\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", DRIVER_PATH);
     }
 
     @Before

@@ -1,0 +1,5 @@
+psql -h localhost -U postgres
+
+\dt
+
+SELECT * FROM nome_tabella;

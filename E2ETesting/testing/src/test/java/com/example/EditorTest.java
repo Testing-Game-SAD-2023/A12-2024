@@ -20,14 +20,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement; // aggiunto
 import org.openqa.selenium.JavascriptExecutor; //aggiunto
 import org.openqa.selenium.Alert; //aggiunto
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class EditorTest {
+    private static final String DRIVER_PATH = "driver\\chromedriver-win64\\chromedriver.exe";
+
+    private static String downloadRelativePath = "class_downloads";
+    private static Path downloadFolderPath = Paths.get("").resolve(downloadRelativePath);
+    private static final String DOWNLOAD_PATH = downloadFolderPath.toAbsolutePath().toString();
+    
+    //private static final String USERNAME = System.getProperty("user.name"); //platform independent 
+    //private static final String DOWNLOAD_PATH = "C:\\Users\\"+USERNAME+"\\Downloads\\";
     private static ChromeDriver driver;
     private static int timeout = 100;
+    
 
     @BeforeClass
     public static void setDriver() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\luix1\\Downloads\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", DRIVER_PATH);
     }
 
     @Before
@@ -36,7 +47,7 @@ public class EditorTest {
         options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
-        chromePrefs.put("download.default_directory", "C:\\Users\\luix1\\Downloads");
+        chromePrefs.put("download.default_directory", DOWNLOAD_PATH);
         options.setExperimentalOption("prefs", chromePrefs);
 
         driver = new ChromeDriver(options);
@@ -68,7 +79,8 @@ public class EditorTest {
 
         driver.findElement(By.id("downloadButton")).click();
 
-        File f = new File("C:\\Users\\luix1\\Downloads\\class.java"); 
+        File f = new File(DOWNLOAD_PATH+"class.java"); 
+        System.out.println("DEBUG| Current download path is: " + DOWNLOAD_PATH);
         
         Thread.sleep(5000);
         
@@ -153,7 +165,26 @@ public class EditorTest {
         WebElement codeMirrorElement = driver.findElement(By.cssSelector("#editor + div"));
 
         // Inserisci il tuo testo nell'editor CodeMirror
-        String code = "import org.junit.Before;\n" +
+        String code = "import org.junit.Test;\n"+
+        "import static org.junit.Assert.*;\n"+
+        "public class TestCalcolatrice {\n"+
+        "\n"+
+        "@Test"+
+        "    public void testDivide() {\n"+
+        "        Calcolatrice calcolatrice = new Calcolatrice();\n"+
+        "        // Test divisione normale\n"+
+        "        assertEquals(2, calcolatrice.divide(6, 3));\n"+
+        "        // Test divisione per zero\n"+
+        "        try {\n"+
+        "           calcolatrice.divide(10, 0);\n"+
+        "           fail(\"Expected ArithmeticException\");\n"+
+        "        } catch (ArithmeticException e) {\n"+
+        "           assertEquals(\"Cannot divide by zero\", e.getMessage());\n"+
+        "        }\n"+
+        "    }\n"+
+        "}\n";
+
+        String codeOld = "import org.junit.Before;\n" +
         "import org.junit.After;\n" +
         "import org.junit.BeforeClass;\n" +
         "import org.junit.AfterClass;\n" +
@@ -224,7 +255,26 @@ public class EditorTest {
         WebElement codeMirrorElement = driver.findElement(By.cssSelector("#editor + div"));
 
         // Inserisci il tuo testo nell'editor CodeMirror
-        String code = "import org.junit.Before;\n" +
+         String code = "import org.junit.Test;\n"+
+        "import static org.junit.Assert.*;\n"+
+        "public class TestCalcolatrice {\n"+
+        "\n"+
+        "@Test"+
+        "    public void testDivide() {\n"+
+        "        Calcolatrice calcolatrice = new Calcolatrice();\n"+
+        "        // Test divisione normale\n"+
+        "        assertEquals(2, calcolatrice.divide(6, 3));\n"+
+        "        // Test divisione per zero\n"+
+        "        try {\n"+
+        "           calcolatrice.divide(10, 0);\n"+
+        "           fail(\"Expected ArithmeticException\");\n"+
+        "        } catch (ArithmeticException e) {\n"+
+        "           assertEquals(\"Cannot divide by zero\", e.getMessage());\n"+
+        "        }\n"+
+        "    }\n"+
+        "}\n";
+
+        String codeOld = "import org.junit.Before;\n" +
         "import org.junit.After;\n" +
         "import org.junit.BeforeClass;\n" +
         "import org.junit.AfterClass;\n" +
@@ -301,7 +351,26 @@ public class EditorTest {
         WebElement codeMirrorElement = driver.findElement(By.cssSelector("#editor + div"));
 
         // Inserisci il tuo testo nell'editor CodeMirror
-        String code = "import org.junit.Before;\n" +
+         String code = "import org.junit.Test;\n"+
+        "import static org.junit.Assert.*;\n"+
+        "public class TestCalcolatrice {\n"+
+        "\n"+
+        "@Test"+
+        "    public void testDivide() {\n"+
+        "        Calcolatrice calcolatrice = new Calcolatrice();\n"+
+        "        // Test divisione normale\n"+
+        "        assertEquals(2, calcolatrice.divide(6, 3));\n"+
+        "        // Test divisione per zero\n"+
+        "        try {\n"+
+        "           calcolatrice.divide(10, 0);\n"+
+        "           fail(\"Expected ArithmeticException\");\n"+
+        "        } catch (ArithmeticException e) {\n"+
+        "           assertEquals(\"Cannot divide by zero\", e.getMessage());\n"+
+        "        }\n"+
+        "    }\n"+
+        "}\n";
+
+        String codeOld = "import org.junit.Before;\n" +
         "import org.junit.After;\n" +
         "import org.junit.BeforeClass;\n" +
         "import org.junit.AfterClass;\n" +
@@ -373,7 +442,26 @@ public class EditorTest {
         WebElement codeMirrorElement = driver.findElement(By.cssSelector("#editor + div"));
 
         // Inserisci il tuo testo nell'editor CodeMirror
-        String code = "import org.junit.Before;\n" +
+         String code = "import org.junit.Test;\n"+
+        "import static org.junit.Assert.*;\n"+
+        "public class TestCalcolatrice {\n"+
+        "\n"+
+        "@Test"+
+        "    public void testDivide() {\n"+
+        "        Calcolatrice calcolatrice = new Calcolatrice();\n"+
+        "        // Test divisione normale\n"+
+        "        assertEquals(2, calcolatrice.divide(6, 3));\n"+
+        "        // Test divisione per zero\n"+
+        "        try {\n"+
+        "           calcolatrice.divide(10, 0);\n"+
+        "           fail(\"Expected ArithmeticException\");\n"+
+        "        } catch (ArithmeticException e) {\n"+
+        "           assertEquals(\"Cannot divide by zero\", e.getMessage());\n"+
+        "        }\n"+
+        "    }\n"+
+        "}\n";
+
+        String codeOld = "import org.junit.Before;\n" +
         "import org.junit.After;\n" +
         "import org.junit.BeforeClass;\n" +
         "import org.junit.AfterClass;\n" +
