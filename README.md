@@ -5,6 +5,15 @@ Membri del gruppo:
 - **Davide Landolfi** - M63001524
 - **Claudio Pisa** - M63001512
 
+# ARCHITETTURA DI PARTENZA (T11-G41)
+
+https://github.com/Testing-Game-SAD-2023/T11-G41
+
+# REQUISITI IMPLEMENTATI
+
+- **R1** : correzione struttura filesystem condiviso (fix aggiornamento degli id e generazione file statistics.csv).
+- **R8** : implementazione di una metrica di punteggio per la partita.
+
 # GUIDA ALL'INSTALLAZIONE
 
 ## PASSO 1
