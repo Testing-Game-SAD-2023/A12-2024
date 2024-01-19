@@ -45,6 +45,12 @@
       </div>
   </div>
   <script>
+      var username = parseJwt(getCookie("jwt")).sub;
+
+      username = username.toString();
+
+      localStorage.setItem("username", username);
+      console.log("username :", username);
     var nameCUT= localStorage.getItem("classe");
     var robotScelto = localStorage.getItem("robot");
     var difficulty = localStorage.getItem("difficulty");
@@ -60,6 +66,9 @@
   // console.log("Username:", username);
   // Puoi anche utilizzare le variabili per modificare il contenuto HTML
   // document.getElementById("usernameField").innerText = username;
+
+
+
 </script>
 </body>
 </html>

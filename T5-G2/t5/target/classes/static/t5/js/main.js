@@ -30,7 +30,7 @@ const parseJwt = (token) => {
 };
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  document.getElementById("usernameField").innerText = parseJwt(getCookie("jwt")).sub;
+   document.getElementById("usernameField").innerText = parseJwt(getCookie("jwt")).sub;
 });
 
 function Handlebuttonclass(id, button) {
@@ -158,11 +158,13 @@ function redirectToPageeditor() {
       playerId: parseJwt(getCookie("jwt")).userId,
       classe: classe,
       robot: robot,
-      difficulty: difficulty
+      difficulty: difficulty,
+      username: localStorage.getItem("username")
     },
     type:'POST',
     traditional: true,
     success: function (response) {
+      //console.log("USERNAME : ", localStorage.getItem("username"));
       // Gestisci la risposta del server qui
       localStorage.setItem("gameId", response.game_id);
       localStorage.setItem("turnId", response.turn_id);
@@ -171,7 +173,8 @@ function redirectToPageeditor() {
       window.location.href = "/editor";
     },
     dataType: "json",
-    error: function (error) {
+    error: function (error) {f
+      console.log("USERNAME : ", localStorage.getItem("username"));
       console.error('Errore nell invio dei dati');
       alert("Dati non inviati con successo");
       // Gestisci l'errore qui
@@ -232,7 +235,14 @@ function redirectToLogin() {
 }
 
 function saveLoginData() {
-  var username = document.getElementById("username").value;
+  //var username = document.getElementById("username").value;
+
+  var username = parseJwt(getCookie("jwt")).sub;
+
+  username = username.toString();
 
   localStorage.setItem("username", username);
+
+
+  console.log("username :",username);
 }

@@ -280,6 +280,7 @@ public class MyController {
             obj = new JSONObject();
             obj.put("closedAt", time);
             obj.put("score", gameScore);
+            obj.put("username", request.getParameter("username"));
             jsonEntity = new StringEntity(obj.toString(), ContentType.APPLICATION_JSON);
 
             httpPut.setEntity(jsonEntity);

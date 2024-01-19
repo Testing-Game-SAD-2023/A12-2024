@@ -214,7 +214,7 @@ public class GuiController {
 
     @PostMapping("/save-data")
     public ResponseEntity<String> saveGame(@RequestParam("playerId") int playerId, @RequestParam("robot") String robot,
-                                           @RequestParam("classe") String classe, @RequestParam("difficulty") String difficulty, HttpServletRequest request) {
+                                           @RequestParam("classe") String classe, @RequestParam("difficulty") String difficulty, @RequestParam("username") String username, HttpServletRequest request) {
 
         if(!request.getHeader("X-UserID").equals(String.valueOf(playerId))) return ResponseEntity.badRequest().body("Unauthorized");
 
@@ -224,18 +224,21 @@ public class GuiController {
 
         GameDataWriter gameDataWriter = new GameDataWriter();
         // g.setGameId(gameDataWriter.getGameId());
-        Game g = new Game(playerId, "descrizione", "nome", difficulty);
+        Game g = new Game(playerId, "descrizione", "nome", difficulty, username);
         // g.setPlayerId(pl);
         // g.setPlayerClass(classe);
         // g.setRobot(robot);
         g.setData_creazione(LocalDate.now());
         g.setOra_creazione(oraFormattata);
         g.setClasse(classe);
+        g.setUsername(username);
         // System.out.println(g.getUsername() + " " + g.getGameId());
+
+        System.out.println("ECCO LO USERNAME : " + username);
 
         // globalID = g.getGameId();
 
-        JSONObject ids = gameDataWriter.saveGame(g);
+        JSONObject ids = gameDataWriter.saveGame(g, username);
         if(ids == null) return ResponseEntity.badRequest().body("Bad Request");
 
         return ResponseEntity.ok(ids.toString());

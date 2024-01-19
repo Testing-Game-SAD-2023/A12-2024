@@ -559,6 +559,7 @@ public class TestCalcolatrice {
     //ricezione di CUT e game info
     $(document).ready(function() {
         var idUtente = parseJwt(getCookie("jwt")).userId;
+        localStorage.setItem("userId", idUtente);
         var idPartita = localStorage.getItem("gameId");
         var idTurno = localStorage.getItem("roundId");
         var nameCUT= localStorage.getItem("classe");
@@ -786,6 +787,7 @@ public class TestCalcolatrice {
                 formData.append("difficulty", localStorage.getItem("difficulty"));
                 formData.append("type", localStorage.getItem("robot")); // modificato
                 formData.append("order", localStorage.getItem("orderTurno"));
+                formData.append("username", localStorage.getItem("username"));
                 $.ajax({
                     url: "http://localhost/api/run", // con questa verso il task 6, si salva e conclude la partita e si decreta il vincitore
                     type: "POST",
@@ -861,7 +863,7 @@ public class TestCalcolatrice {
 
                 var classe = 'VolumeT8/FolderTreeEvo/' + localStorage.getItem("classe") + '/' + localStorage.getItem("classe") + 'SourceCode/' + localStorage.getItem("classe") + '.java';
 
-                var test = 'VolumeT8/FolderTreeEvo/' + localStorage.getItem("classe") + '/StudentLogin/Game' + localStorage.getItem("gameId") + '/Round1/Turn' + orderTurno + '/TestReport';
+                var test = 'VolumeT8/FolderTreeEvo/' + localStorage.getItem("classe") + '/StudentLogin/' + localStorage.getItem("username") + '/Game' + localStorage.getItem("gameId") + '/Round1/Turn' + orderTurno + '/TestReport';
                 // Definisci il percorso dell'API
                 var apiBaseUrl = 'http://localhost:3080/api/';
 

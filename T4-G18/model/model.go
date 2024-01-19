@@ -8,6 +8,7 @@ import (
 type Game struct {
 	ID           int64 		`gorm:"primaryKey;autoIncrement"`
 	Name         string		`gorm:"default:null"`
+	Username     string		`gorm:"default:null"`
 	CurrentRound int   		`gorm:"default:1"`
 	Description  sql.NullString `gorm:"default:null"`
 	Difficulty   string		`gorm:"default:null"`

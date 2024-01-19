@@ -70,14 +70,17 @@ public class GameDataWriter {
 
     // return gameId;
     // }
-    public JSONObject saveGame(Game game) {
+    public JSONObject saveGame(Game game, String username) {
         try {
             String time = ZonedDateTime.now(ZoneOffset.UTC).format(DateTimeFormatter.ISO_INSTANT);
             JSONObject obj = new JSONObject();
 
+            System.out.println("SONO IN SAVEGAME, GUARDA LO USERNAME : " +  game.getUsername());
+
             obj.put("difficulty", game.getDifficulty());
             obj.put("name", game.getName());
             obj.put("description", game.getDescription());
+            obj.put("username", game.getUsername());
             obj.put("startedAt", time);
 
             JSONArray playersArray = new JSONArray();
