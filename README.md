@@ -1,9 +1,6 @@
 # Requisiti R1 ed R8 - Gruppo A12
-<<<<<<< HEAD
-Componenti:
-=======
+
 Membri del gruppo:
->>>>>>> 04c083e629daf29fda1046bd9faf60ef9c4b5ec7
 - **Francesco Pio Manna** - M63001485
 - **Davide Landolfi** - M63001524
 - **Claudio Pisa** - M63001512
