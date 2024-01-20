@@ -46,7 +46,7 @@ Per fare ciò bisogna fare le seguenti operazioni:
         db.interaction.createIndex({ name: "text" })
         db.Admin.createIndex({username: 1})
 
-L'intera applicazione è adesso pienamente configurata e raggiungibile sulla porta :80. Per una guida all'installazione e all'utilizzo più completa consultare la documentazione al capitolo 8.
+L'intera applicazione è adesso pienamente configurata e raggiungibile sulla porta :80. Per una guida all'installazione e all'utilizzo più completa consultare la documentazione del gruppo T11-G41 al capitolo 8.
 
 # VIDEO DIMOSTRAZIONE
 ## Admin
